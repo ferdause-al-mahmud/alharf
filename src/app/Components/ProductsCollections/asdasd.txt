@@ -1,0 +1,158 @@
+"use client";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Baggy from "../../../../baggy.jpg";
+import shoes from "../../../../shoes.jpg";
+import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+const products = [
+  {
+    id: 1,
+    imageUrl: "https://i.ibb.co/ccqKXnfg/THP05289.jpg",
+    name: "Panjabi",
+    path: "/collections/panjabi",
+  },
+  {
+    id: 3,
+    imageUrl:
+      "https://res.cloudinary.com/dqsjmcelc/image/upload/v1742773612/ClassyTouch/m9zloitgzyi27fg6jrfb.jpg",
+    name: "Casual Shirts",
+    path: "/collections/shirts",
+  },
+  {
+    id: 5,
+    imageUrl: Baggy,
+    name: "Baggy Pants",
+    path: "/collections/baggy-pants",
+  },
+
+  {
+    id: 2,
+    imageUrl:
+      "https://res.cloudinary.com/dqsjmcelc/image/upload/v1742684908/ClassyTouch/uxh4itnlmydnqrzsszj6.jpg",
+    name: "Drop Shoulders",
+    path: "/collections/t-shirts",
+  },
+  {
+    id: 6,
+    imageUrl: "https://i.ibb.co.com/CVXSmXk/IMG-2511.jpg",
+    name: "Joggers",
+    path: "/collections/joggers",
+  },
+  {
+    id: 8,
+    imageUrl: shoes,
+    name: "Shoes",
+    path: "/collections/shoes",
+  },
+];
+
+const ProductsCollection = () => {
+  const [slidesPerView, setSlidesPerView] = useState(4);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setSlidesPerView(2);
+      } else if (window.innerWidth < 1024) {
+        setSlidesPerView(3);
+      } else {
+        setSlidesPerView(4);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return (
+    <div className="max-w-7xl mx-auto pt-10">
+      <div className="relative mb-12 ml-4 flex flex-col items-center justify-center ">
+        <h2 className=" text-2xl font-serif sm:text-4xl font-extrabold text-[#1a1a1a] tracking-wide">
+          Our Collections
+        </h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-pink-500 mt-2 rounded"></div>
+      </div>
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={20}
+        slidesPerView={slidesPerView}
+        navigation
+        loop={true}
+        // pagination={{ clickable: true }}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        className="product-slider"
+      >
+        {products.map((product) => (
+          <SwiperSlide key={product.id}>
+            <div className="product-card group relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 h-[200px] sm:h-[250px] lg:h-[400px]">
+              <Link href={product.path} className="block h-full">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={product.imageUrl || "/placeholder.svg"}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    className="object-contain transition-transform duration-700 group-hover:scale-110"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-center text-sm sm:text-xl font-semibold text-white bg-black/50 backdrop-blur-sm p-1 sm:p-3 rounded">
+                      {product.name}
+                    </h3>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <style jsx global>{`
+        .product-slider .swiper-pagination {
+          bottom: 0 !important;
+        }
+        .product-slider .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          background: #000;
+          opacity: 0.5;
+        }
+        .product-slider .swiper-pagination-bullet-active {
+          opacity: 1;
+          background: #000;
+        }
+        .product-slider .swiper-button-next,
+        .product-slider .swiper-button-prev {
+          color: #000;
+          background: rgba(255, 255, 255, 0.8);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .product-slider .swiper-button-next:after,
+        .product-slider .swiper-button-prev:after {
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .product-slider .swiper-button-disabled {
+          opacity: 0.35;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default ProductsCollection;

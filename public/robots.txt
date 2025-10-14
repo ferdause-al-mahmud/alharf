@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://classytouchbd.com
+
+# Sitemaps
+Sitemap: https://classytouchbd.com/sitemap.xml
+Sitemap: https://classytouchbd.com/api/sitemap.xml
