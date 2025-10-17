@@ -1,11 +1,24 @@
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
+import logoImage from "../../../../Logo.png";
 
 const Logo = ({ pacifico }) => {
-    return (
-        <Link href={'/'} className={`cursor-pointer hover:bg-black hover:bg-opacity-5 px-3 rounded-lg text-lg sm:text-xl text-white ${pacifico.className}`}>
-            Classy Touch
-        </Link>
-    );
+  return (
+    <Link
+      href="/"
+      className={`cursor-pointer py-2 hover:scale-110 transition-all duration-200 ${pacifico.className}`}
+    >
+      {/* Tablet */}
+      <span className="block md:hidden">
+        <Image src={logoImage} alt="Logo" width={80} height={40} priority />
+      </span>
+
+      {/* Desktop */}
+      <span className="hidden md:block">
+        <Image src={logoImage} alt="Logo" width={120} height={80} priority />
+      </span>
+    </Link>
+  );
 };
 
 export default Logo;

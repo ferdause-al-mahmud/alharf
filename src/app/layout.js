@@ -21,11 +21,11 @@ const roboto = Roboto({
 
 export const metadata = {
   title: {
-    default: "Classy Touch - Men's Fashion & Apparel",
-    template: "%s | Classy Touch",
+    default: "Alharf - Women's Fashion wear",
+    template: "%s | Alharf",
   },
   description:
-    "Classy Touch offers premium men's fashion, including shirts, pants, panjabis, t-shirts, jackets, joggers, accessories, shoes and more. Elevate your style with our modern and traditional garments.",
+    "Alharf offers premium men's fashion, including shirts, pants, panjabis, t-shirts, jackets, joggers, accessories, shoes and more. Elevate your style with our modern and traditional garments.",
 };
 
 export default function RootLayout({ children }) {

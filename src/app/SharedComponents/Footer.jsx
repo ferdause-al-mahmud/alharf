@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
-
+import logoImage from "../../../logo.png";
 const Footer = () => {
   const pathName = usePathname();
   if (pathName.includes("dashboard")) {
@@ -14,12 +14,7 @@ const Footer = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start space-y-8 sm:space-y-0">
         {/* Left Section: Logo and Description */}
         <div className="flex flex-col text-center sm:text-left items-center sm:items-start flex-1">
-          <Image
-            src="https://i.ibb.co.com/z82hFLr/LOGO.jpg"
-            alt="Logo"
-            height={80}
-            width={80}
-          />
+          <Image src={logoImage} alt="Logo" height={80} width={80} />
           <p className=" mt-4">
             <strong>Classy Touch</strong> - Your destination for the latest
             fashion trends!

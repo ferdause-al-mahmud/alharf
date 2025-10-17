@@ -1,9 +1,4 @@
-"use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import Baggy from "../../../../baggy.jpg";
-import shoes from "../../../../shoes.jpg";
-import polo from "../../../../polo.jpg";
 import Link from "next/link";
 
 const products = [
@@ -20,12 +15,7 @@ const products = [
     name: "Casual Shirts",
     path: "/collections/shirts",
   },
-  {
-    id: 5,
-    imageUrl: Baggy,
-    name: "Baggy Pants",
-    path: "/collections/baggy-pants",
-  },
+
   {
     id: 2,
     imageUrl:
@@ -34,22 +24,10 @@ const products = [
     path: "/collections/t-shirts",
   },
   {
-    id: 2,
-    imageUrl: polo,
-    name: "Polo",
-    path: "/collections/polo",
-  },
-  {
     id: 6,
     imageUrl: "https://i.ibb.co.com/CVXSmXk/IMG-2511.jpg",
     name: "Joggers",
     path: "/collections/joggers",
-  },
-  {
-    id: 8,
-    imageUrl: shoes,
-    name: "Shoes",
-    path: "/collections/shoes",
   },
 ];
 

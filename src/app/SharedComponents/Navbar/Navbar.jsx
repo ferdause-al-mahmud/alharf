@@ -77,8 +77,8 @@ const Navbar = () => {
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <div className={`bg-[#242833] fixed z-50 w-full`}>
-      <div className="navbar max-w-7xl mx-auto text-[#a4bdcb]">
+    <div className={`bg-[#F2DADF] fixed z-50 w-full`}>
+      <div className="navbar max-w-7xl mx-auto !text-[#000000]">
         <div className="navbar-start">
           <HamburgerMenu
             links={links}
@@ -108,7 +108,7 @@ const Navbar = () => {
 
         <div className="navbar-end pr-2">
           <IoSearch
-            className="lg:hidden text-white mr-2 text-3xl cursor-pointer"
+            className="lg:hidden text-black mr-2 text-3xl cursor-pointer"
             onClick={() => setIsSearchOpen(true)}
           />
           <UserCartIcons user={user} loading={loading} />
@@ -149,25 +149,25 @@ const Navbar = () => {
 
 const links = [
   { title: "Home", path: "/" },
-  { title: "Clothing", path: "/clothing" },
-  { title: "Accessories", path: "/accessories" },
+  // { title: "Clothing", path: "/clothing" },
+  // { title: "Accessories", path: "/accessories" },
   { title: "Shoes", path: "/collections/shoes" },
-  { title: "Winter Collections", path: "/Winter" },
+  // { title: "Winter Collections", path: "/Winter" },
 ];
 const winterCategories = [
-  { title: "Hoodie", path: "/winter-collections/hoodie" },
-  { title: "Jacket", path: "/winter-collections/jacket" },
-  { title: "Shacket", path: "/winter-collections/shacket" },
-  { title: "Sweatshirt", path: "/winter-collections/sweatshirt" },
+  // { title: "Hoodie", path: "/winter-collections/hoodie" },
+  // { title: "Jacket", path: "/winter-collections/jacket" },
+  // { title: "Shacket", path: "/winter-collections/shacket" },
+  // { title: "Sweatshirt", path: "/winter-collections/sweatshirt" },
 ];
 const clothingCategories = [
-  { title: "Panjabi", path: "/collections/panjabi" },
-  { title: "Pajama", path: "/collections/pajama" },
-  { title: "T-shirts", path: "/collections/t-shirts" },
-  { title: "Shirts", path: "/collections/shirts" },
-  { title: "Polo", path: "/collections/polo" },
-  { title: "Pants", path: "/collections/pants" },
-  { title: "Joggers", path: "/collections/joggers" },
+  // { title: "Panjabi", path: "/collections/panjabi" },
+  // { title: "Pajama", path: "/collections/pajama" },
+  // { title: "T-shirts", path: "/collections/t-shirts" },
+  // { title: "Shirts", path: "/collections/shirts" },
+  // { title: "Polo", path: "/collections/polo" },
+  // { title: "Pants", path: "/collections/pants" },
+  // { title: "Joggers", path: "/collections/joggers" },
 ];
 
 export default Navbar;

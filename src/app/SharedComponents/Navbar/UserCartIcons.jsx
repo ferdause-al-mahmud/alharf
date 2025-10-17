@@ -21,20 +21,18 @@ const UserCartIcons = ({ user, loading }) => {
         {/* User Icon or Login Button */}
         {user ? (
           <Link href={href}>
-            <div className="btn transition-transform duration-200 ease-in-out hover:scale-110 hover:bg-[#242833] bg-[#242833] border-none px-2 flex items-center justify-center cursor-pointer">
-              <FaRegUserCircle className="text-2xl text-white" />
-            </div>
+            <FaRegUserCircle className="text-[40px] transition-transform duration-200 ease-in-out hover:scale-110  border-none px-2 flex items-center justify-center cursor-pointer" />
           </Link>
         ) : (
           <Link href="/login">
-            <CiLogin className="text-2xl font-bold text-white transition-transform duration-200 ease-in-out hover:scale-110" />
+            <CiLogin className="text-2xl font-bold  transition-transform duration-200 ease-in-out hover:scale-110" />
           </Link>
         )}
 
         {/* Cart Icon with Total Quantity for Navbar */}
         <div className="relative hidden lg:block">
           <Link href="/cart">
-            <IoCart className="text-2xl text-white transition-transform duration-200 ease-in-out hover:scale-110" />
+            <IoCart className="text-2xl  transition-transform duration-200 ease-in-out hover:scale-110" />
           </Link>
           {totalQuantity > 0 && (
             <div className="absolute -top-1 -right-2 bg-red-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">

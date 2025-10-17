@@ -89,7 +89,7 @@ const HamburgerMenu = ({
       </div>
 
       <div
-        className={`fixed inset-y-0 top-14 left-0 z-[10] bg-[#242833] w-64 overflow-y-auto p-2 shadow-lg transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-y-0 top-14 left-0 z-[10] bg-[#F2DADF] w-64 overflow-y-auto p-2 shadow-lg transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         } lg:hidden`}
       >
@@ -102,8 +102,8 @@ const HamburgerMenu = ({
                   <div
                     className={`p-2 text-[14px] rounded-md cursor-pointer ${
                       isDropdownOpenMobile
-                        ? "text-white underline"
-                        : "hover:text-white hover:underline"
+                        ? "text-[#000000] underline"
+                        : "hover:text-[#000000] hover:underline"
                     }`}
                     onClick={toggleDropdownMobile}
                   >
@@ -114,8 +114,8 @@ const HamburgerMenu = ({
                   <div
                     className={`p-2 text-[14px] rounded-md cursor-pointer ${
                       isWinterDropdownOpen
-                        ? "text-white underline"
-                        : "hover:text-white hover:underline"
+                        ? "text-[#000000] underline"
+                        : "hover:text-[#000000] hover:underline"
                     }`}
                     onClick={toggleWinterDropdown}
                   >
@@ -126,8 +126,8 @@ const HamburgerMenu = ({
                   <Link
                     className={`p-2 text-[14px] rounded-md ${
                       pathName === link.path
-                        ? "text-white underline"
-                        : "hover:text-white hover:underline"
+                        ? "text-[#000000] underline"
+                        : "hover:text-[#000000] hover:underline"
                     }`}
                     href={link.path}
                   >
@@ -139,9 +139,9 @@ const HamburgerMenu = ({
                 {link.title === "Clothing" && (
                   <div onClick={toggleDropdownMobile}>
                     {isDropdownOpenMobile ? (
-                      <FiChevronUp className="text-white" />
+                      <FiChevronUp className="text-[#000000]" />
                     ) : (
-                      <FiChevronDown className="text-white" />
+                      <FiChevronDown className="text-[#000000]" />
                     )}
                   </div>
                 )}
@@ -150,9 +150,9 @@ const HamburgerMenu = ({
                 {link.title === "Winter Collections" && (
                   <div onClick={toggleWinterDropdown}>
                     {isWinterDropdownOpen ? (
-                      <FiChevronUp className="text-white" />
+                      <FiChevronUp className="text-[#000000]" />
                     ) : (
-                      <FiChevronDown className="text-white" />
+                      <FiChevronDown className="text-[#000000]" />
                     )}
                   </div>
                 )}
@@ -168,14 +168,14 @@ const HamburgerMenu = ({
                         {category.title === "Joggers" ? (
                           <div
                             onClick={toggleJoggersDropdown}
-                            className={`block px-3 py-2 uppercase !text-white hover:bg-gray-700 hover:underline cursor-pointer whitespace-nowrap`}
+                            className={`block px-3 py-2 uppercase !text-[#000000] hover:bg-gray-700 hover:underline cursor-pointer whitespace-nowrap`}
                           >
                             {category.title}
                             <span className="ml-2 inline-flex items-center">
                               {isJoggersDropdownOpen ? (
-                                <FiChevronUp className="text-white" />
+                                <FiChevronUp className="text-[#000000]" />
                               ) : (
-                                <FiChevronDown className="text-white" />
+                                <FiChevronDown className="text-[#000000]" />
                               )}
                             </span>
                           </div>
@@ -183,14 +183,14 @@ const HamburgerMenu = ({
                           // Pants category with subcategories
                           <div
                             onClick={togglePantsDropdown}
-                            className={`block px-3 py-2 uppercase !text-white hover:bg-gray-700 hover:underline cursor-pointer whitespace-nowrap`}
+                            className={`block px-3 py-2 uppercase !text-[#000000] hover:bg-gray-700 hover:underline cursor-pointer whitespace-nowrap`}
                           >
                             {category.title}
                             <span className="ml-2 inline-flex items-center">
                               {isPantsDropdownOpen ? (
-                                <FiChevronUp className="text-white" />
+                                <FiChevronUp className="text-[#000000]" />
                               ) : (
-                                <FiChevronDown className="text-white" />
+                                <FiChevronDown className="text-[#000000]" />
                               )}
                             </span>
                           </div>
@@ -198,10 +198,10 @@ const HamburgerMenu = ({
                           // Other subcategories that are clickable links
                           <Link
                             href={category.path}
-                            className={`block px-3 py-2 uppercase !text-white hover:bg-gray-700 hover:underline whitespace-nowrap ${
+                            className={`block px-3 py-2 uppercase !text-[#000000] hover:bg-gray-700 hover:underline whitespace-nowrap ${
                               pathName === category.path
                                 ? " underline "
-                                : "text-white hover:underline"
+                                : "text-[#000000] hover:underline"
                             }`}
                           >
                             {category.title}
@@ -216,11 +216,11 @@ const HamburgerMenu = ({
                             <li>
                               <Link
                                 href="/collections/baggy-joggers"
-                                className={`block p-2 !text-white hover:bg-gray-700 hover:underline ${
+                                className={`block p-2 !text-[#000000] hover:bg-gray-700 hover:underline ${
                                   pathName ===
                                   "/collections/joggers/baggy-joggers"
-                                    ? "!text-white underline "
-                                    : "text-white hover:underline"
+                                    ? "!text-[#000000] underline "
+                                    : "text-[#000000] hover:underline"
                                 }`}
                               >
                                 Baggy Joggers
@@ -229,11 +229,11 @@ const HamburgerMenu = ({
                             <li>
                               <Link
                                 href="/collections/narrow-joggers"
-                                className={`block p-2 !text-white hover:bg-gray-700 hover:underline ${
+                                className={`block p-2 !text-[#000000] hover:bg-gray-700 hover:underline ${
                                   pathName ===
                                   "/collections/joggers/narrow-joggers"
-                                    ? "!text-white underline "
-                                    : "text-white hover:underline"
+                                    ? "!text-[#000000] underline "
+                                    : "text-[#000000] hover:underline"
                                 }`}
                               >
                                 Narrow Joggers
@@ -248,10 +248,10 @@ const HamburgerMenu = ({
                           <li>
                             <Link
                               href="/collections/pants"
-                              className={`block p-2 !text-white hover:bg-gray-700 hover:underline ${
+                              className={`block p-2 !text-[#000000] hover:bg-gray-700 hover:underline ${
                                 pathName === "/collections/pants"
-                                  ? "!text-white underline "
-                                  : "text-white hover:underline"
+                                  ? "!text-[#000000] underline "
+                                  : "text-[#000000] hover:underline"
                               }`}
                             >
                               Casual Pants
@@ -260,10 +260,10 @@ const HamburgerMenu = ({
                           <li>
                             <Link
                               href="/collections/baggy-pants"
-                              className={`block p-2 !text-white hover:bg-gray-700 hover:underline ${
+                              className={`block p-2 !text-[#000000] hover:bg-gray-700 hover:underline ${
                                 pathName === "/collections/baggy-pants"
-                                  ? "!text-white underline "
-                                  : "text-white hover:underline"
+                                  ? "!text-[#000000] underline "
+                                  : "text-[#000000] hover:underline"
                               }`}
                             >
                               Baggy Pants
@@ -283,10 +283,10 @@ const HamburgerMenu = ({
                     <li key={idx} className="relative">
                       <Link
                         href={category.path}
-                        className={`block px-3 text-[12px] py-2 uppercase !text-white hover:bg-gray-700 hover:underline whitespace-nowrap ${
+                        className={`block px-3 text-[12px] py-2 uppercase !text-[#000000] hover:bg-gray-700 hover:underline whitespace-nowrap ${
                           pathName === category.path
-                            ? "!text-white underline "
-                            : "text-white hover:underline"
+                            ? "!text-[#000000] underline "
+                            : "text-[#000000] hover:underline"
                         }`}
                       >
                         {category.title}

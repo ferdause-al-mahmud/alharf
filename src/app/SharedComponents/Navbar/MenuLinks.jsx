@@ -43,20 +43,20 @@ const MenuLinks = ({
         >
           {link.title === "Clothing" || link.title === "Winter Collections" ? (
             // Non-clickable Clothing and Winter Collections link, only for hover
-            <div className="p-2 text-[16px] uppercase font-medium rounded-md cursor-pointer text-white hover:underline">
+            <div className="p-2 text-[16px] uppercase font-medium rounded-md cursor-pointer text-[#000000] hover:underline">
               {link.title}
               <span className="inline-flex items-center">
                 {isDropdownOpen ? (
-                  <FiChevronUp className="text-white" />
+                  <FiChevronUp className="text-[#000000]" />
                 ) : (
-                  <FiChevronDown className="text-white" />
+                  <FiChevronDown className="text-[#000000]" />
                 )}
               </span>
             </div>
           ) : (
             // Other clickable links
             <Link
-              className={`p-2 text-[16px] !text-white uppercase font-medium rounded-md ${
+              className={`p-2 text-[16px] !text-[#000000] uppercase font-medium rounded-md ${
                 pathName === link.path ? " underline" : " hover:underline"
               }`}
               href={link.path}
@@ -75,14 +75,14 @@ const MenuLinks = ({
                     {category.title === "Joggers" ? (
                       <div
                         onClick={toggleJoggersDropdown}
-                        className={`block px-3 py-2 uppercase !text-white hover:bg-gray-700 hover:underline cursor-pointer whitespace-nowrap`}
+                        className={`block px-3 py-2 uppercase !text-[#000000] hover:bg-gray-700 hover:underline cursor-pointer whitespace-nowrap`}
                       >
                         {category.title}
                         <span className="ml-2 inline-flex items-center">
                           {isJoggersDropdownOpen ? (
-                            <FiChevronUp className="text-white" />
+                            <FiChevronUp className="text-[#000000]" />
                           ) : (
-                            <FiChevronDown className="text-white" />
+                            <FiChevronDown className="text-[#000000]" />
                           )}
                         </span>
                       </div>
@@ -90,14 +90,14 @@ const MenuLinks = ({
                       // Make Pants clickable to toggle subcategories
                       <div
                         onClick={togglePantsDropdown}
-                        className={`block px-3 py-2 uppercase !text-white hover:bg-gray-700 hover:underline cursor-pointer whitespace-nowrap`}
+                        className={`block px-3 py-2 uppercase !text-[#000000] hover:bg-gray-700 hover:underline cursor-pointer whitespace-nowrap`}
                       >
                         {category.title}
                         <span className="ml-2 inline-flex items-center">
                           {isPantsDropdownOpen ? (
-                            <FiChevronUp className="text-white" />
+                            <FiChevronUp className="text-[#000000]" />
                           ) : (
-                            <FiChevronDown className="text-white" />
+                            <FiChevronDown className="text-[#000000]" />
                           )}
                         </span>
                       </div>
@@ -105,10 +105,10 @@ const MenuLinks = ({
                       // Other subcategories that are clickable links
                       <Link
                         href={category.path}
-                        className={`block px-3 py-2 uppercase !text-white hover:bg-gray-700 hover:underline whitespace-nowrap ${
+                        className={`block px-3 py-2 uppercase !text-[#000000] hover:bg-gray-700 hover:underline whitespace-nowrap ${
                           pathName === category.path
                             ? " underline "
-                            : "text-white hover:underline"
+                            : "text-[#000000] hover:underline"
                         }`}
                       >
                         {category.title}
@@ -122,7 +122,7 @@ const MenuLinks = ({
                       <li>
                         <Link
                           href="/collections/baggy-joggers"
-                          className="block text-[12px] px-3 py-1 uppercase !text-white hover:bg-gray-700 hover:underline"
+                          className="block text-[12px] px-3 py-1 uppercase !text-[#000000] hover:bg-gray-700 hover:underline"
                         >
                           Baggy Joggers
                         </Link>
@@ -130,7 +130,7 @@ const MenuLinks = ({
                       <li>
                         <Link
                           href="/collections/narrow-joggers"
-                          className="block px-3 text-[12px] py-1 uppercase !text-white hover:bg-gray-700 hover:underline"
+                          className="block px-3 text-[12px] py-1 uppercase !text-[#000000] hover:bg-gray-700 hover:underline"
                         >
                           Narrow Joggers
                         </Link>
@@ -144,7 +144,7 @@ const MenuLinks = ({
                       <li>
                         <Link
                           href="/collections/pants"
-                          className="block text-[12px] px-3 py-1 uppercase !text-white hover:bg-gray-700 hover:underline"
+                          className="block text-[12px] px-3 py-1 uppercase !text-[#000000] hover:bg-gray-700 hover:underline"
                         >
                           Casual Pants
                         </Link>
@@ -152,7 +152,7 @@ const MenuLinks = ({
                       <li>
                         <Link
                           href="/collections/baggy-pants"
-                          className="block text-[12px] px-3 py-1 uppercase !text-white hover:bg-gray-700 hover:underline"
+                          className="block text-[12px] px-3 py-1 uppercase !text-[#000000] hover:bg-gray-700 hover:underline"
                         >
                           Baggy Pants
                         </Link>
@@ -171,10 +171,10 @@ const MenuLinks = ({
                 <li key={idx} className="relative">
                   <Link
                     href={category.path}
-                    className={`block px-3 text-[14px] py-2 uppercase !text-white hover:bg-gray-700 hover:underline whitespace-nowrap ${
+                    className={`block px-3 text-[14px] py-2 uppercase !text-[#000000] hover:bg-gray-700 hover:underline whitespace-nowrap ${
                       pathName === category.path
                         ? " underline "
-                        : "text-white hover:underline"
+                        : "text-[#000000] hover:underline"
                     }`}
                   >
                     {category.title}
