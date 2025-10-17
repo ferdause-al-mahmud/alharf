@@ -9,9 +9,7 @@ const SalePopUpBanner = ({ onClose }) => {
 
   useEffect(() => {
     // Show popup only once per session
-    const hasSeenSaleBanner = sessionStorage.getItem(
-      "classyTouchSaleBannerSeen"
-    );
+    const hasSeenSaleBanner = sessionStorage.getItem("alharfSaleBannerSeen");
     if (!hasSeenSaleBanner) {
       const timer = setTimeout(() => {
         setIsVisible(true);
@@ -28,13 +26,13 @@ const SalePopUpBanner = ({ onClose }) => {
     setIsAnimating(false);
     setTimeout(() => {
       setIsVisible(false);
-      sessionStorage.setItem("classyTouchSaleBannerSeen", "true");
+      sessionStorage.setItem("alharfSaleBannerSeen", "true");
       onClose(); // trigger next popup
     }, 300);
   };
 
   const handleImageClick = () => {
-    sessionStorage.setItem("classyTouchSaleBannerSeen", "true");
+    sessionStorage.setItem("alharfSaleBannerSeen", "true");
     router.push("/sale");
     setIsVisible(false);
   };

@@ -8,7 +8,7 @@ const PopupWrapper = () => {
   const [showFree, setShowFree] = useState(false);
 
   useEffect(() => {
-    const hasSeenSale = sessionStorage.getItem("classyTouchSaleBannerSeen");
+    const hasSeenSale = sessionStorage.getItem("alharfSaleBannerSeen");
 
     if (!hasSeenSale) {
       setShowSale(true);
@@ -18,7 +18,7 @@ const PopupWrapper = () => {
   }, []);
 
   const handleSaleClose = () => {
-    sessionStorage.setItem("classyTouchSaleBannerSeen", "true");
+    sessionStorage.setItem("alharfSaleBannerSeen", "true");
     setShowSale(false);
     setShowFree(true); // show free delivery popup next
   };

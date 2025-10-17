@@ -8,7 +8,7 @@ const PopupBanner = () => {
   const router = useRouter();
   useEffect(() => {
     // Check if banner has been shown before
-    const hasSeenBanner = sessionStorage.getItem("classyTouchBannerSeen");
+    const hasSeenBanner = sessionStorage.getItem("alharfBannerSeen");
 
     if (!hasSeenBanner) {
       // Show banner after a short delay
@@ -25,7 +25,7 @@ const PopupBanner = () => {
     setIsAnimating(false);
     setTimeout(() => {
       setIsVisible(false);
-      sessionStorage.setItem("classyTouchBannerSeen", "true");
+      sessionStorage.setItem("alharfBannerSeen", "true");
     }, 300);
   };
 
@@ -68,7 +68,7 @@ const PopupBanner = () => {
         {/* Content */}
         <div className="banner-content">
           <div className="content-section">
-            <div className="brand-name">Classy Touch</div>
+            <div className="brand-name">Alharf</div>
             <div className="main-text">
               <span className="highlight">FREE DELIVERY</span>
               <div className="sub-line">

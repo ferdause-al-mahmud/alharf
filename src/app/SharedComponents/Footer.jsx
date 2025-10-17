@@ -16,14 +16,14 @@ const Footer = () => {
         <div className="flex flex-col text-center sm:text-left items-center sm:items-start flex-1">
           <Image src={logoImage} alt="Logo" height={80} width={80} />
           <p className=" mt-4">
-            <strong>Classy Touch</strong> - Your destination for the latest
-            fashion trends!
+            <strong>Alharf</strong> - Your destination for the latest fashion
+            trends!
           </p>
           <p>
             20, Udayan School road, Dakkhin Khan, Dhaka-1230, Dhaka, Bangladesh
           </p>
           <p>+880 1601-828841</p>
-          <p>classytouch387@gmail.com</p>
+          <p>alharfbynusrat@gmail.com</p>
         </div>
 
         {/* Center Section: Useful Links */}
@@ -47,7 +47,7 @@ const Footer = () => {
           <h3 className="font-bold mb-2">Follow Us</h3>
           <div className="flex justify-center gap-4">
             <a
-              href="https://web.facebook.com/Classy.Touch.official?mibextid=ZbWKwL&_rdc=1&_rdr"
+              href="https://www.facebook.com/AlharfBD"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-blue-600"
@@ -55,7 +55,7 @@ const Footer = () => {
               <FaFacebook size={24} />
             </a>
             <a
-              href="https://www.instagram.com/class.ytouch/?igsh=cWhvMDNmMHN5aDlp"
+              href="https://www.instagram.com/al_ha_rf"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-pink-600"
@@ -70,8 +70,8 @@ const Footer = () => {
       <hr id="footer-divider" className="my-8 border-gray-300" />
       <div className="text-center">
         <p>
-          &copy; {new Date().getFullYear()} - All rights reserved by Classy
-          Touch - Designed and Developed by -{" "}
+          &copy; {new Date().getFullYear()} - All rights reserved by Alharf -
+          Designed and Developed by -{" "}
           <a
             className="text-blue-500 underline"
             target="_blank"

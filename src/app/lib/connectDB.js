@@ -16,7 +16,7 @@ export const connectDB = async () => {
             }
         });
         await client.connect();  // Wait for the connection to be established
-        db = client.db('ClassyTouch');  // Select the database
+        db = client.db('alharf');  // Select the database
         return db;
     } catch (error) {
         console.error('Failed to connect to the database', error);

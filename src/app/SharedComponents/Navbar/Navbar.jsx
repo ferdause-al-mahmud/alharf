@@ -62,9 +62,8 @@ const Navbar = () => {
   }, []);
 
   const { cart } = useCart();
-  const messengerWebLink =
-    "https://www.facebook.com/messages/t/ClassyTouchForMen";
-  const messengerMobileLink = "https://m.me/ClassyTouchForMen";
+  const messengerWebLink = "https://www.facebook.com/messages/t/AlharfBD";
+  const messengerMobileLink = "https://m.me/AlharfBD";
 
   const handleMessengerRedirect = (e) => {
     e.preventDefault();

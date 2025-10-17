@@ -1,11 +1,11 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: 'https://classytouchbd.com',
+    siteUrl: 'https://alharfbd.com',
     generateRobotsTxt: true,
     exclude: ['/api/**', '/dashboard', '/dashboard/**', '/login', '/register', '/profile', '/cart', '/orders', '/orders/**', '/checkout'],
     robotsTxtOptions: {
         additionalSitemaps: [
-            'https://classytouchbd.com/api/sitemap.xml' // Point to the dynamic sitemap
+            'https://alharfbd.com/api/sitemap.xml' // Point to the dynamic sitemap
         ],
     },
 };

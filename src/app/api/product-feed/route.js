@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic"; // Ensure fresh data on each request
 
 export async function GET() {
-    const siteUrl = "https://www.classytouchbd.com"; // Use your live domain
+    const siteUrl = "https://www.alharfbd.com"; // Use your live domain
 
     try {
         // Fetch latest product data from API
@@ -32,7 +32,7 @@ export async function GET() {
                 <link>${siteUrl}/product/${product.id}</link>
                 <g:image_link>${product.imageUrl[0]}</g:image_link>
                 <g:additional_image_link>${product.imageUrl.slice(1).join(", ")}</g:additional_image_link>
-                <g:brand>ClassyTouch</g:brand>
+                <g:brand>Alharf</g:brand>
                 <g:condition>new</g:condition>
                 <g:price>${product?.offerPrice ? product?.offerPrice : product.price} BDT</g:price>
                 ${product?.offerPrice &&
@@ -53,9 +53,9 @@ export async function GET() {
         const xml = `<?xml version="1.0" encoding="UTF-8"?>
         <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
             <channel>
-                <title>ClassyTouch Product Feed</title>
+                <title>Alharf Product Feed</title>
                 <link>${siteUrl}</link>
-                <description>ClassyTouch product catalog for Facebook Commerce</description>
+                <description>Alharf product catalog for Facebook Commerce</description>
                 ${productsXml}
             </channel>
         </rss>`;

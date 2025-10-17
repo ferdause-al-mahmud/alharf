@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic"; // Ensure fresh data on each request
 
 export async function GET() {
-    const siteUrl = "https://classytouchbd.com";
+    const siteUrl = "https://alharfbd.com";
 
     try {
         // Fetch latest product data dynamically

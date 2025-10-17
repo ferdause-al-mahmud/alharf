@@ -19,14 +19,16 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
+
 export const metadata = {
   title: {
-    default: "Alharf - Women's Fashion wear",
+    default: "Alharf - Women's Fashion, Footwear & Accessories",
     template: "%s | Alharf",
   },
   description:
-    "Alharf offers premium men's fashion, including shirts, pants, panjabis, t-shirts, jackets, joggers, accessories, shoes and more. Elevate your style with our modern and traditional garments.",
+    "Alharf offers premium women's fashion, including dresses, tops, shoes, handbags, accessories, and more. Elevate your look with our modern and elegant collections.",
 };
+
 
 export default function RootLayout({ children }) {
   return (
@@ -72,7 +74,7 @@ export default function RootLayout({ children }) {
         var f = d.getElementsByTagName(s)[0],
         j = d.createElement(s);
         j.async = true;
-        j.src = "https://load.sst.classytouchbd.com/9lbcdttzm.js?" + i;
+        j.src = "https://load.sst.alharfbd.com/9lbcdttzm.js?" + i;
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', '7=aWQ9R1RNLVQ3TjZINDZS&page=2');
     `,
@@ -99,7 +101,7 @@ export default function RootLayout({ children }) {
         {/* SST Server Side Tracking (noscript) */}
         <noscript>
           <iframe
-            src="https://load.sst.classytouchbd.com/ns.html?id=GTM-T7N6H46R"
+            src="https://load.sst.alharfbd.com/ns.html?id=GTM-T7N6H46R"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}

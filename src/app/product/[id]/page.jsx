@@ -29,7 +29,7 @@ const ProductPage = () => {
               value: data.price,
               currency: "BDT", // Or your currency
               category: data.category,
-              brand: "Classy Touch", // You can add the brand or any other relevant information
+              brand: "Alharf", // You can add the brand or any other relevant information
             });
           }
         } else {

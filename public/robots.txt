@@ -3,8 +3,8 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://classytouchbd.com
+Host: https://alharfbd.com
 
 # Sitemaps
-Sitemap: https://classytouchbd.com/sitemap.xml
-Sitemap: https://classytouchbd.com/api/sitemap.xml
+Sitemap: https://alharfbd.com/sitemap.xml
+Sitemap: https://alharfbd.com/api/sitemap.xml
