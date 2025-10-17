@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
-import logoImage from "../../../logo.png";
+import logoImage from "../../../Logo.png";
 const Footer = () => {
   const pathName = usePathname();
   if (pathName.includes("dashboard")) {
