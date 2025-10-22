@@ -150,22 +150,6 @@ const ProductsContainer = ({ products }) => {
                       <p className="text-lg sm:text-xl font-bold mb-2">
                         BDT {product?.price} TK
                       </p>
-                      {[
-                        "SC-01",
-                        "SC-02",
-                        "SC-03",
-                        "SC-04",
-                        "SC-05",
-                        "SC-06",
-                        "SC-07",
-                      ].includes(product?.id) && (
-                        <div className="inline-flex items-center gap-2">
-                          <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg ">
-                            ✨ Free Shipping
-                          </span>
-                          <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-bounce"></div>
-                        </div>
-                      )}
                     </div>
                   )}
                   {product?.id === "PA-01" && (

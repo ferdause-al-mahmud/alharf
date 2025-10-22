@@ -5,13 +5,12 @@ const ColorSelection = ({ product, redirectToColorProduct }) => {
 
   // IDs that should use image previews instead of color swatches
   const previewIds = [
-    "CST-01",
-    "CST-02",
-    "CST-03",
-    "CST-04",
-    "CST-05",
-    "CST-06",
-    "CST-07",
+    "CBC-01",
+    "CBC-02",
+    "CBC-03",
+    "CBC-04",
+    "CBC-05",
+    "CBC-06",
   ];
   const isDesignMode = previewIds.includes(product?.id);
 

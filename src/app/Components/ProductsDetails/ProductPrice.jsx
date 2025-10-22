@@ -24,11 +24,6 @@ const ProductPrice = ({ product }) => {
                 🔥 HOT DEAL
               </span>
             )}
-            {product?.category === "shoes" && (
-              <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">
-                🚚 Free Shipping
-              </span>
-            )}
           </div>
         </div>
       ) : (
@@ -36,19 +31,6 @@ const ProductPrice = ({ product }) => {
           <p className="text-3xl font-bold text-gray-900">
             BDT {product?.price}
           </p>
-          {[
-            "SC-01",
-            "SC-02",
-            "SC-03",
-            "SC-04",
-            "SC-05",
-            "SC-06",
-            "SC-07",
-          ].includes(product?.id) && (
-            <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">
-              ✨ Free Shipping
-            </span>
-          )}
         </div>
       )}
     </div>

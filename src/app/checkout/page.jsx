@@ -25,20 +25,13 @@ const CheckoutPage = () => {
   const { cart, loading, clearCart } = useCart();
   const [shippingOption, setShippingOption] = useState("insideDhaka");
   const [paymentOption, setpaymentOption] = useState("cash");
-  const [shippingCost, setShippingCost] = useState(70);
+  const [shippingCost, setShippingCost] = useState(80);
   const [discount, setDiscount] = useState(0);
 
   // Check if all items in cart are shoes
-  const hasOnlyFreeDeliveryShoes = cart.every((item) =>
-    ["SC-01", "SC-02", "SC-03", "SC-04", "SC-05", "SC-06", "SC-07"].includes(
-      item?.id
-    )
-  );
-  const hasShoesInCart = cart.some((item) => item.category === "shoes");
 
   // Check if total quantity is 3 or more
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
-  const hasFreeDelivery = totalQuantity >= 3;
 
   const subtotal = cart.reduce((total, item) => {
     const priceToUse = item.offerPrice ? item.offerPrice : item.price; // Use offerPrice if available, otherwise use price
@@ -65,7 +58,7 @@ const CheckoutPage = () => {
     setShippingOption(selectedOption);
 
     if (selectedOption === "insideDhaka") {
-      setShippingCost(70);
+      setShippingCost(80);
     } else if (selectedOption === "outsideDhaka") {
       setShippingCost(130);
     } else if (selectedOption === "dhakaSubAreas") {
@@ -86,16 +79,14 @@ const CheckoutPage = () => {
 
   // Set shipping cost to 0 if all items are shoes OR if total quantity is 3 or more
   useEffect(() => {
-    if (hasOnlyFreeDeliveryShoes || hasFreeDelivery) {
-      setShippingCost(0);
-    } else if (shippingOption === "insideDhaka") {
-      setShippingCost(70);
+    if (shippingOption === "insideDhaka") {
+      setShippingCost(80);
     } else if (shippingOption === "outsideDhaka") {
       setShippingCost(130);
     } else if (shippingOption === "dhakaSubAreas") {
       setShippingCost(100);
     }
-  }, [hasOnlyFreeDeliveryShoes, hasFreeDelivery, shippingOption]);
+  }, [shippingOption]);
 
   const total = subtotal + shippingCost - discount;
 
@@ -214,8 +205,7 @@ const CheckoutPage = () => {
         formData,
         cart: cleanedCart,
         paymentOption,
-        shippingOption:
-          hasOnlyFreeDeliveryShoes || hasFreeDelivery ? "free" : shippingOption,
+        shippingOption: shippingOption,
         total,
         shippingCost,
         discount,
@@ -400,31 +390,6 @@ const CheckoutPage = () => {
             Your Order
           </Typography>
 
-          {/* Free Delivery Notice */}
-          {hasFreeDelivery && !hasOnlyFreeDeliveryShoes && (
-            <Box
-              sx={{
-                backgroundColor: "#e8f5e8",
-                border: "1px solid #4caf50",
-                borderRadius: 1,
-                p: 2,
-                mb: 2,
-                display: "flex",
-                alignItems: "center",
-                gap: 1,
-              }}
-            >
-              <span style={{ fontSize: "1.2em" }}>🎉</span>
-              <Typography
-                variant="body2"
-                sx={{ color: "#2e7d32", fontWeight: "medium" }}
-              >
-                Congratulations! You qualify for <strong>FREE DELIVERY</strong>{" "}
-                by ordering 3+ items ({totalQuantity} items in cart)
-              </Typography>
-            </Box>
-          )}
-
           <Paper
             variant="outlined"
             sx={{
@@ -482,82 +447,49 @@ const CheckoutPage = () => {
             )}
 
             {/* Shipping Section */}
-            {hasOnlyFreeDeliveryShoes || hasFreeDelivery ? (
-              // Show free shipping for shoes only OR for 3+ items
-              <Box>
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  sx={{ py: 1 }}
-                >
-                  <Box display="flex" alignItems="center" gap={1}>
-                    <Typography>Shipping</Typography>
-                    <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-semibold px-2 py-1 rounded-full">
-                      🚚 Free Shipping
-                      {hasFreeDelivery &&
-                        !hasOnlyFreeDeliveryShoes &&
-                        " (3+ Items)"}
-                    </span>
-                  </Box>
-                  <Typography sx={{ color: "green", fontWeight: "bold" }}>
-                    ৳0.00
-                  </Typography>
-                </Box>
+            <RadioGroup value={shippingOption} onChange={handleShippingChange}>
+              <Box display="flex" justifyContent="space-between">
+                <FormControlLabel
+                  value="insideDhaka"
+                  control={<Radio />}
+                  label="Inside Dhaka"
+                />
+                <Typography> (৳80.00)</Typography>
               </Box>
-            ) : (
-              // Show shipping options for non-shoes items with less than 3 quantity
-              <RadioGroup
-                value={shippingOption}
-                onChange={handleShippingChange}
+
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
               >
-                <Box display="flex" justifyContent="space-between">
-                  <FormControlLabel
-                    value="insideDhaka"
-                    control={<Radio />}
-                    label="Inside Dhaka"
-                  />
-                  <Typography> (৳70.00)</Typography>
-                </Box>
+                <FormControlLabel
+                  value="dhakaSubAreas"
+                  control={<Radio />}
+                  label={
+                    <Box>
+                      Dhaka Sub Areas (Tongi, Gazipur, Savar, Keraniganj,
+                      Narayanganj, Kaliganj)
+                    </Box>
+                  }
+                />
+                <Typography>(৳100.00)</Typography>
+              </Box>
 
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems="center"
-                >
-                  <FormControlLabel
-                    value="dhakaSubAreas"
-                    control={<Radio />}
-                    label={
-                      <Box>
-                        Dhaka Sub Areas (Tongi, Gazipur, Savar, Keraniganj,
-                        Narayanganj, Kaliganj)
-                      </Box>
-                    }
-                  />
-                  <Typography>(৳100.00)</Typography>
-                </Box>
+              <Box display="flex" justifyContent="space-between">
+                <FormControlLabel
+                  value="outsideDhaka"
+                  control={<Radio />}
+                  label="Outside Dhaka"
+                />
+                <Typography> (৳130.00)</Typography>
+              </Box>
+            </RadioGroup>
 
-                <Box display="flex" justifyContent="space-between">
-                  <FormControlLabel
-                    value="outsideDhaka"
-                    control={<Radio />}
-                    label="Outside Dhaka"
-                  />
-                  <Typography> (৳130.00)</Typography>
-                </Box>
-              </RadioGroup>
-            )}
-
-            {!(hasOnlyFreeDeliveryShoes || hasFreeDelivery) && (
-              <>
-                <Divider sx={{ my: 1, backgroundColor: "#666" }} />
-                <Box display="flex" justifyContent="space-between">
-                  <Typography>Shipping</Typography>
-                  <Typography>৳{shippingCost.toFixed(2)}</Typography>
-                </Box>
-              </>
-            )}
+            <Divider sx={{ my: 1, backgroundColor: "#666" }} />
+            <Box display="flex" justifyContent="space-between">
+              <Typography>Shipping</Typography>
+              <Typography>৳{shippingCost.toFixed(2)}</Typography>
+            </Box>
 
             <Divider sx={{ my: 1, backgroundColor: "#666" }} />
             <Box display="flex" justifyContent="space-between">
