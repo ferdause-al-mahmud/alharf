@@ -35,7 +35,7 @@ export async function GET() {
 
         // Static pages to be included in the sitemap
         const staticPages = [
-            "/", "/collections", "/winterCollections", "/accessories",
+            "/", "/collections/shoes",
             "/about", "/privacy-policy"
         ].map(
             (path) => `
