@@ -25,8 +25,14 @@ const CheckoutPage = () => {
   const { cart, loading, clearCart } = useCart();
   const [shippingOption, setShippingOption] = useState("insideDhaka");
   const [paymentOption, setpaymentOption] = useState("cash");
-  const [shippingCost, setShippingCost] = useState(80);
+  const [shippingCost, setShippingCost] = useState(70);
   const [discount, setDiscount] = useState(0);
+
+  // Coupon state
+  const [couponCode, setCouponCode] = useState("");
+  const [couponDiscount, setCouponDiscount] = useState(0);
+  const [isCouponApplied, setIsCouponApplied] = useState(false);
+  const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
 
   // Check if all items in cart are shoes
 
@@ -34,7 +40,7 @@ const CheckoutPage = () => {
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   const subtotal = cart.reduce((total, item) => {
-    const priceToUse = item.offerPrice ? item.offerPrice : item.price; // Use offerPrice if available, otherwise use price
+    const priceToUse = item.offerPrice ? item.offerPrice : item.price;
     return total + priceToUse * item.quantity;
   }, 0);
 
@@ -67,14 +73,51 @@ const CheckoutPage = () => {
   };
 
   const calculateDiscount = () => {
-    // Check if PA-01 product exists in cart with quantity > 1
     const pa01Product = cart.find(
       (item) => item.id === "PA-01" && item.quantity > 1
     );
     if (pa01Product) {
-      return 100; // 100 Tk discount
+      return 100;
     }
     return 0;
+  };
+
+  // Handle coupon code application
+  const handleApplyCoupon = async () => {
+    if (!couponCode.trim()) {
+      toast.error("Please enter a coupon code");
+      return;
+    }
+
+    setIsApplyingCoupon(true);
+
+    try {
+      if (couponCode.trim().toUpperCase() === "SILVER10") {
+        // Apply 10% discount directly (no first-order check)
+        const discountAmount = Math.round(subtotal * 0.1);
+        setCouponDiscount(discountAmount);
+        setIsCouponApplied(true);
+        toast.success(`Coupon applied! You saved ৳${discountAmount}`);
+      } else {
+        // Invalid code
+        toast.error("Invalid coupon code");
+      }
+    } catch (error) {
+      console.error("Error applying coupon:", error);
+      toast.error(
+        error.response?.data?.message || "Failed to apply coupon code"
+      );
+    } finally {
+      setIsApplyingCoupon(false);
+    }
+  };
+
+  // Handle coupon removal
+  const handleRemoveCoupon = () => {
+    setCouponCode("");
+    setCouponDiscount(0);
+    setIsCouponApplied(false);
+    toast.success("Coupon removed");
   };
 
   // Set shipping cost to 0 if all items are shoes OR if total quantity is 3 or more
@@ -88,7 +131,7 @@ const CheckoutPage = () => {
     }
   }, [shippingOption]);
 
-  const total = subtotal + shippingCost - discount;
+  const total = subtotal + shippingCost - discount - couponDiscount;
 
   const handlePaymentMethod = (event) => {
     const selectedOption = event.target.value;
@@ -111,12 +154,12 @@ const CheckoutPage = () => {
   useEffect(() => {
     if (window.fbq) {
       window.fbq("track", "InitiateCheckout", {
-        content_ids: cart.map((item) => item.id), // Ensure each product has an ID
+        content_ids: cart.map((item) => item.id),
         content_type: "product",
         value: subtotal,
         currency: "BDT",
       });
-      // Google Tag Manager Data Layer Push
+
       if (typeof window !== "undefined" && window.dataLayer) {
         window.dataLayer.push({
           event: "initiateCheckout",
@@ -209,6 +252,8 @@ const CheckoutPage = () => {
         total,
         shippingCost,
         discount,
+        couponDiscount,
+        couponCode: isCouponApplied ? couponCode : null,
       };
 
       setIsSubmitting(true);
@@ -218,11 +263,10 @@ const CheckoutPage = () => {
         if (response.status === 201) {
           const orderID = response.data.orderID;
 
-          // Update product quantities immediately after order is placed
           const quantityUpdates = cleanedCart.map((item) => ({
             productId: item.id,
             size: item.selectedSize,
-            quantity: -Number.parseInt(item.quantity, 10), // Negative to reduce inventory
+            quantity: -Number.parseInt(item.quantity, 10),
           }));
 
           try {
@@ -231,7 +275,6 @@ const CheckoutPage = () => {
             });
           } catch (error) {
             console.error("Error updating product quantities:", error);
-            // Don't block the order confirmation even if quantity update fails
           }
 
           toast.success(`Order placed successfully! Order ID: ${orderID}`);
@@ -442,11 +485,107 @@ const CheckoutPage = () => {
                     -৳{discount.toFixed(2)}
                   </Typography>
                 </Box>
+              </>
+            )}
+
+            {/* Coupon Code Section */}
+            <Divider sx={{ my: 2, backgroundColor: "#666" }} />
+            <Box sx={{ mb: 2 }}>
+              <Typography variant="subtitle2" gutterBottom>
+                Have a coupon code?
+              </Typography>
+              <Box display="flex" gap={1}>
+                <TextField
+                  size="small"
+                  fullWidth
+                  placeholder="Enter coupon code"
+                  value={couponCode}
+                  onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
+                  disabled={isCouponApplied}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      backgroundColor: "white",
+                    },
+                  }}
+                />
+                {!isCouponApplied ? (
+                  <Button
+                    variant="contained"
+                    onClick={handleApplyCoupon}
+                    disabled={isApplyingCoupon || !couponCode.trim()}
+                    sx={{
+                      bgcolor: "black",
+                      color: "white",
+                      minWidth: "100px",
+                      ":hover": {
+                        bgcolor: "#333",
+                      },
+                    }}
+                  >
+                    {isApplyingCoupon ? (
+                      <CircularProgress size={20} color="inherit" />
+                    ) : (
+                      "Apply"
+                    )}
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outlined"
+                    onClick={handleRemoveCoupon}
+                    sx={{
+                      color: "red",
+                      borderColor: "red",
+                      minWidth: "100px",
+                      ":hover": {
+                        borderColor: "darkred",
+                        bgcolor: "#ffebee",
+                      },
+                    }}
+                  >
+                    Remove
+                  </Button>
+                )}
+              </Box>
+              {isCouponApplied && (
+                <Box
+                  sx={{
+                    mt: 1,
+                    p: 1,
+                    bgcolor: "#e8f5e8",
+                    borderRadius: 1,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1,
+                  }}
+                >
+                  <span>✓</span>
+                  <Typography variant="body2" sx={{ color: "#2e7d32" }}>
+                    Coupon "<strong>{couponCode}</strong>" applied successfully!
+                  </Typography>
+                </Box>
+              )}
+            </Box>
+
+            {couponDiscount > 0 && (
+              <>
                 <Divider sx={{ my: 1, backgroundColor: "#666" }} />
+                <Box
+                  sx={{ color: "green" }}
+                  display="flex"
+                  justifyContent="space-between"
+                >
+                  <Typography sx={{ color: "green" }}>
+                    Coupon Discount
+                  </Typography>
+                  <Typography sx={{ color: "green" }}>
+                    -৳{couponDiscount.toFixed(2)}
+                  </Typography>
+                </Box>
               </>
             )}
 
             {/* Shipping Section */}
+            <Divider sx={{ my: 1, backgroundColor: "#666" }} />
             <RadioGroup value={shippingOption} onChange={handleShippingChange}>
               <Box display="flex" justifyContent="space-between">
                 <FormControlLabel
@@ -503,11 +642,6 @@ const CheckoutPage = () => {
                 control={<Radio />}
                 label="Cash on delivery"
               />
-              {/* <FormControlLabel
-                                value="bkash"
-                                control={<Radio />}
-                                label="bKash Payment Gateway"
-                            /> */}
             </RadioGroup>
 
             <Button

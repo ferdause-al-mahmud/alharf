@@ -6,6 +6,7 @@ import Navbar from "./SharedComponents/Navbar/Navbar";
 import { Toaster } from "react-hot-toast";
 import { CartProvider } from "./CartProvider/CartProvider";
 import Script from "next/script";
+import PopupWrapper from "./Components/PopupWrapper";
 
 // Load Assistant font
 const assistant = Assistant({
@@ -73,6 +74,8 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <CartProvider>
             <Navbar />
+            <PopupWrapper /> {/* handles Sale + Free Delivery popups */}
+
             <main className="pt-16">{children}</main>
             <Footer />
             <Toaster position="top-right" reverseOrder={false} />

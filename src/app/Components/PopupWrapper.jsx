@@ -8,25 +8,26 @@ const PopupWrapper = () => {
   const [showFree, setShowFree] = useState(false);
 
   useEffect(() => {
-    const hasSeenSale = sessionStorage.getItem("alharfSaleBannerSeen");
+    const hasSeenSale = sessionStorage.getItem("classyTouchSaleBannerSeen");
 
     if (!hasSeenSale) {
       setShowSale(true);
-    } else {
-      setShowFree(true);
     }
+    //  else {
+    //   setShowFree(true);
+    // }
   }, []);
 
   const handleSaleClose = () => {
-    sessionStorage.setItem("alharfSaleBannerSeen", "true");
+    sessionStorage.setItem("classyTouchSaleBannerSeen", "true");
     setShowSale(false);
-    setShowFree(true); // show free delivery popup next
+    // setShowFree(true); // show free delivery popup next
   };
 
   return (
     <>
       {showSale && <SalePopUpBanner onClose={handleSaleClose} />}
-      {showFree && <PopupBanner />}
+      {/* {showFree && <PopupBanner />} */}
     </>
   );
 };
